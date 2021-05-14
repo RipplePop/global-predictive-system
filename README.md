@@ -1,2 +1,2 @@
-# global-predictive-system
+# Global Predictive System
 A Stability and Mobilization Platform
