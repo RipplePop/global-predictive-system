@@ -68,6 +68,11 @@ $db['default'] = array(
 	'username' => 'root',
 	'password' => 'root',
 	'database' => 'system_stability',
+
+	// 'username' => 'wpup_system_stability',
+	// 'password' => '(5Vsu7+~%,#5',
+	// 'database' => 'wpup_system_stability',
+
 	'dbdriver' => 'mysqli',
 	'dbprefix' => 'tbl_',
 	'pconnect' => FALSE,
