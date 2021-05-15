@@ -91,3 +91,4 @@ defined('TEXT_DOMAIN')         OR define('TEXT_DOMAIN', 'System Stability'); // 
 defined('TEXT_CREDIT')         OR define('TEXT_CREDIT', 'RipplePop'); // Credit to
 defined('TEXT_VERSION')        OR define('TEXT_VERSION', 'v1.0.0'); // Version number
 defined('TEXT_NOTHING')        OR define('TEXT_NOTHING', 'nothing'); // Version number
+defined('PUBLIC_API_URL_1')    OR define('PUBLIC_API_URL_1', 'http://api.worldbank.org/v2/'); // Public api link
