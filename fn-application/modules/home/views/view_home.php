@@ -3,11 +3,19 @@
     <h2 class="display-3 text-center">Global Predictive System</h2>
     <p>A Stability and Mobilization Platform</p>
     <div class="col-lg-12 col-md-12 col-sm-12 auto-form-wrapper">
-
+  
       <div class="card shadow-0 rounded border mt-4">
         <div class="card-body">
-          <div class="mapeal-container">
+          <div class="world">
             <div class="map"></div>
+          </div>
+          <div class="pt-4 m-0 col-lg-3 col-md-12 col-sm-12 pl-0 pr-0">
+            <select name="data-year" id="data-year" class="select2">
+              <option value="">Select Year</option>
+              <?php for ( $i = 1; $i <= 50; $i++ ): ?>
+                <option value="<?php echo ( date('Y') - $i ); ?>"><?php echo ( date('Y') - $i ); ?></option>
+              <?php endfor; ?>
+            </select>
           </div>
         </div>
       </div>
@@ -15,7 +23,7 @@
       <div class="card shadow-0 rounded border mt-4">
         <div class="card-body">
           <form action="" method="post">
-            <div class="form-group">
+            <div class="form-group col-lg-3 col-md-12 col-sm-12 pl-0 pr-0">
               <select name="countries" id="countries" class="select2">
                 <option value="">Select Country</option>
                 <?php foreach( $countries as $key ): ?>
@@ -34,7 +42,7 @@
                   <th>Population</th>
                   <th>Polarity</th>
                   <th>Party Visual Media Affiliate Density</th>
-                  <th>Paryt Authority Discipline</th>
+                  <th>Party Authority Discipline</th>
                 </tr>
               </thead>
               <tbody>
