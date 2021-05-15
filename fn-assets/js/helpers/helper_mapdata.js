@@ -15,7 +15,7 @@ $(function () {
     .done(function(data){
       $(".world").trigger('update', [{
         mapOptions: data,
-        animDuration: 300
+        animDuration: 100
       }]);
     });
   });

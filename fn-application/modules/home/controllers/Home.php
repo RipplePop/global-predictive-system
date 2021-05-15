@@ -8,6 +8,7 @@ class Home extends MY_Controller
 
   function __construct() {
     parent:: __construct();
+    $this->load->driver( 'cache' );
     $this->js = [
       'fn-assets/js/plugins/mousewheel.js',
       'fn-assets/vendors/raphael/raphael.min.js',
@@ -25,10 +26,10 @@ class Home extends MY_Controller
   public function index() {
     $countries = [];
 
-    if ( isset( $_SESSION['countries'] ) ) {
-      $countries = $_SESSION['countries'];
+    if ( $this->cache->file->get( 'countries' ) ) {
+      $countries = $this->cache->file->get( 'countries' );
     } else {
-      $datas = json_decode( file_get_contents( PUBLIC_API_URL_1 . 'country/all?format=json&page=1&per_page=300' )  );
+      $datas = json_decode( file_get_contents( PUBLIC_API_URL_1 . 'country/all?format=json&page=1&per_page=400' )  );
       if ( isset( $datas[1] ) ) {
         foreach ( $datas[1] as $data) {
           foreach ( $data as $key => $val ) {
@@ -37,7 +38,7 @@ class Home extends MY_Controller
             }
           }
         }
-        $_SESSION['countries'] = $countries;
+        $this->cache->file->save( 'countries', $countries, 2592000 );
       }
     }
 
@@ -55,11 +56,11 @@ class Home extends MY_Controller
   public function population() {
     if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
       if ( isset( $_GET['year'] ) ) {
-        $date = $this->input->get('year');
+        $date = $this->input->get( 'year' );
         $population[] = [];
 
-        if ( isset( $_SESSION['year-'. $date] ) ) {
-          $population = $_SESSION['year-'. $date];
+        if ( $this->cache->file->get( 'year-'. $date ) ) {
+          $population = $this->cache->file->get( 'year-'. $date );
         } else {
           $datas = json_decode( file_get_contents( PUBLIC_API_URL_1 . 'country/indicator/SP.POP.1564.TO?format=json&per_page=400&date='. $date ) );
           if ( isset( $datas[1] ) ) {
@@ -82,7 +83,7 @@ class Home extends MY_Controller
               }
             } 
           }
-          $_SESSION['year-'. $date] = $population;
+          $this->cache->file->save( 'year-'. $date, $population, 2592000 );
         }
         response( [ 'areas' => $population ] );
       }

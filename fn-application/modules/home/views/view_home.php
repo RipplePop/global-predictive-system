@@ -6,16 +6,16 @@
   
       <div class="card shadow-0 rounded border mt-4">
         <div class="card-body">
-          <div class="world">
-            <div class="map"></div>
-          </div>
-          <div class="pt-4 m-0 col-lg-3 col-md-12 col-sm-12 pl-0 pr-0">
+          <div class="pb-4 m-0 col-lg-3 col-md-12 col-sm-12 pl-0 pr-0">
             <select name="data-year" id="data-year" class="select2">
               <option value="">Select Year</option>
               <?php for ( $i = 1; $i <= 50; $i++ ): ?>
                 <option value="<?php echo ( date('Y') - $i ); ?>"><?php echo ( date('Y') - $i ); ?></option>
               <?php endfor; ?>
             </select>
+          </div>
+          <div class="world">
+            <div class="map"></div>
           </div>
         </div>
       </div>
@@ -70,10 +70,10 @@
       <div class="card shadow-0 rounded border mt-4">
         <div class="card-body">
           <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-md-12 col-sm-12 pb-4">
               <canvas id="barChart"></canvas>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-md-12 col-sm-12">
               <canvas id="pieChart"></canvas>
             </div>
           </div>

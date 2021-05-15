@@ -341,3 +341,24 @@ div.dataTables_wrapper div.dataTables_filter {
 .select2-selection {
   border-radius: 6px !important;
 }
+
+
+/* Map */
+
+.mapael .map {
+  position: relative;
+}
+
+.mapael .mapTooltip {
+  position: absolute;
+  background-color: #787878;
+  color: #fff;
+  -moz-opacity: 0.9;
+  opacity: 0.9;
+  filter: alpha(opacity=70);
+  border-radius: 10px;
+  padding: 10px;
+  z-index: 1000;
+  max-width: 200px;
+  display: none;
+}
