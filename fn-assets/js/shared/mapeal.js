@@ -20,7 +20,7 @@ $(function () {
         defaultLink: {
           factor: 0.4,
           attrsHover: {
-            stroke: "#a4e100"
+            stroke: "#707070"
           }
         },
         defaultPlot: {
@@ -188,7 +188,7 @@ $(function () {
           factor: -0.2,
           between: ['sydney', 'plot1'],
           attrs: {
-            stroke: "#a4e100",
+            stroke: "#707070",
             "stroke-width": 3,
             "stroke-linecap": "round",
             opacity: 0.6
@@ -201,7 +201,7 @@ $(function () {
           factor: -0.1,
           between: ['sydney', 'plot2'],
           attrs: {
-            stroke: "#a4e100",
+            stroke: "#707070",
             "stroke-width": 8,
             "stroke-linecap": "round",
             opacity: 0.6
@@ -214,7 +214,7 @@ $(function () {
           factor: 0.2,
           between: ['sydney', 'plot3'],
           attrs: {
-            stroke: "#a4e100",
+            stroke: "#707070",
             "stroke-width": 4,
             "stroke-linecap": "round",
             opacity: 0.6
@@ -227,7 +227,7 @@ $(function () {
           factor: 0.2,
           between: ['sydney', 'tokyo'],
           attrs: {
-            stroke: "#a4e100",
+            stroke: "#707070",
             "stroke-width": 6,
             "stroke-linecap": "round",
             opacity: 0.6

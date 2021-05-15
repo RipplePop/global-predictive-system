@@ -1,17 +1,46 @@
+@font-face {
+  font-family: montserrat;
+  src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+}
 
+h1, h2, h3, h4, h5, h6, p {
+  font-family: montserrat !important;
+}
+
+/* Custom scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 18px !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(120deg, #1E1E1E, #1E1E1E, #1E1E1E);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(120deg, #1E1E1E, #1E1E1E, #1E1E1E);
+}
 
 .auth.theme-two .banner-section .slide-content.bg-1 {
-  background: linear-gradient(120deg, #556cdc, #128bfc, #18bef1);
+  background: linear-gradient(120deg, #1E1E1E, #1E1E1E, #1E1E1E);
   background-size: cover
 }
 
 .auth.register-bg-2 {
-  background: linear-gradient(120deg, #556cdc, #128bfc, #18bef1);
+  background: linear-gradient(120deg, #1E1E1E, #1E1E1E, #1E1E1E);
   background-size: cover
 }
 
 .auth.theme-two .banner-section .slide-content.bg-2 {
-  background: linear-gradient(120deg, #556cdc, #128bfc, #18bef1);
+  background: linear-gradient(120deg, #1E1E1E, #1E1E1E, #1E1E1E);
   background-size: cover
 }
 
@@ -20,7 +49,7 @@
 }
 
 .auth.multi-step-login .step-form .step-progress li.active:before {
-  background: linear-gradient(120deg, #556cdc, #128bfc, #18bef1);
+  background: linear-gradient(120deg, #1E1E1E, #1E1E1E, #1E1E1E);
   color: #fff;
 }
 
@@ -72,7 +101,7 @@
 }
 
 .user-settings:hover {
-  color: #18bef1 !important;
+  color: #1E1E1E !important;
 }
 
 .table tr th {
@@ -80,9 +109,9 @@
   height: 65px;
 } 
 
-.table th {
+/* .table th {
   text-transform: uppercase;
-}
+} */
 
 a.btn {
   color: #ffffff;
@@ -175,7 +204,7 @@ div.dataTables_wrapper div.dataTables_filter {
   margin-left: -30px;
   position: relative;
   z-index: 9999;
-  color: #128bfc;
+  color: #1E1E1E;
   cursor: pointer;
 }
 
@@ -212,30 +241,6 @@ div.dataTables_wrapper div.dataTables_filter {
 
 .nav-tabs .nav-item {
   padding-right: 10px;
-}
-
-/* Custom scrollbar */
-
-/* width */
-::-webkit-scrollbar {
-  width: 14px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
-  border-radius: 10px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(120deg, #556cdc, #128bfc, #18bef1);
-  border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(120deg, #556cdc, #128bfc, #18bef1);
 }
 
 /* Custom */
@@ -287,12 +292,10 @@ div.dataTables_wrapper div.dataTables_filter {
   border: 1px solid #CCC;
 }
 
+.rounded {
+  border-radius: 12px !important;
+}
 
-/* Login */
-
-/* .login .bg-body {
-  object-fit: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url('../../fn-uploads/images/bg-login.jpg') !important;
-} */
+.select2-selection {
+  border-radius: 6px !important;
+}
