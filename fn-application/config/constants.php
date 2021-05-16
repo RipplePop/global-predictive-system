@@ -87,7 +87,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 /**
  * Cutom constants
  */
-defined('TEXT_DOMAIN')         OR define('TEXT_DOMAIN', 'System Stability'); // Text domain
+defined('TEXT_DOMAIN')         OR define('TEXT_DOMAIN', 'Global Predictive System'); // Text domain
 defined('TEXT_CREDIT')         OR define('TEXT_CREDIT', 'RipplePop'); // Credit to
 defined('TEXT_VERSION')        OR define('TEXT_VERSION', 'v1.0.0'); // Version number
 defined('TEXT_NOTHING')        OR define('TEXT_NOTHING', 'nothing'); // Version number
