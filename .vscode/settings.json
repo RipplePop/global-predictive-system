@@ -1,2 +1,16 @@
 {
+  "peacock.elementAdjustments": {
+    "activityBar.background": "#e90b8d",
+    "activityBar.inactiveForeground": "#b5b5b5",
+    "activityBar.foreground": "#fff"
+  },
+  "cSpell.ignoreWords": [
+    "endfor"
+  ],
+  "cSpell.words": [
+    "endfor",
+    "endforeach",
+    "foreach",
+    "mapael"
+  ]
 }

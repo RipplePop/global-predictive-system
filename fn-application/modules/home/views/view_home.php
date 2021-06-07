@@ -4,23 +4,24 @@
     <p>A Stability and Mobilization Platform</p>
     <div class="col-lg-12 col-md-12 col-sm-12 auto-form-wrapper">
   
-      <div class="card rounded border mt-4">
+      <div class="card shadow-0 rounded border mt-4">
         <div class="card-body">
           <div class="pb-4 m-0 col-lg-3 col-md-12 col-sm-12 pl-0 pr-0">
             <select name="data-year" id="data-year" class="select2">
               <option value="">Select Year</option>
-              <?php for ( $i = 1; $i <= 50; $i++ ): ?>
-                <option value="<?php echo ( date('Y') - $i ); ?>"><?php echo ( date('Y') - $i ); ?></option>
+              <?php $year = date('Y') - 1; for ( $i = 1; $i <= 50; $i++ ): ?>
+                <option value="<?php echo ( $year - $i ); ?>"><?php echo ( $year - $i ); ?></option>
               <?php endfor; ?>
             </select>
           </div>
           <div class="world">
             <div class="map"></div>
+            <div class="areaLegend pt-4 pb-3" style="overflow-x: auto;"></div>
           </div>
         </div>
       </div>
 
-      <div class="card rounded border mt-5">
+      <div class="card shadow-0 rounded border mt-5">
         <div class="card-body">
           <form action="" method="post">
             <div class="form-group col-lg-3 col-md-12 col-sm-12 pl-0 pr-0">
@@ -66,7 +67,7 @@
         </div>
       </div>
       
-      <div class="card rounded border mt-5">
+      <div class="card shadow-0 rounded border mt-5">
         <div class="card-body">
           <h4>Wisdom's Story line: As a means to managing results</h4>
           <p>
@@ -96,7 +97,7 @@
         </div>      
       </div>
 
-      <div class="card rounded border mt-5">
+      <div class="card shadow-0 rounded border mt-5">
         <div class="card-body">
           <div class="row">
             <div class="col-lg-6 col-md-12 col-sm-12 pb-4">
@@ -109,7 +110,7 @@
         </div>
       </div>
       
-      <div class="card rounded border mt-5">
+      <div class="card shadow-0 rounded border mt-5">
         <div class="card-body">
           <h4>Leader Means Factor</h4>
           <p>Real/perceived individual leadership strength is based on individual wealth. This is significant with respect to overall party leadership coercion.If elements a) to e) remain unchanged, party leadership coercion may have a disproportionate (infinite) impact on stability in times of national emergency.</p>

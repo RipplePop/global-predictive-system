@@ -3,6 +3,10 @@ $(function () {
   // Get world population
   var baseUrl = $('#base_url').val();
 
+  // Initialize select2
+  $('.select2').select2({width: '100%'});
+
+  // Query data
   $.get( baseUrl + 'home/population', { 'year': 2019 } )
   .done(function(data){
     map(data.areas);
@@ -20,7 +24,7 @@ $(function () {
     });
   });
 
-  // Mapael initialisation
+  // Mapael initialization
   function map(data) {
     $(".world").mapael({
       map: {
@@ -35,8 +39,12 @@ $(function () {
       },
       legend: {
         area: {
-          title: "Country population",
+          cssClass: 'areaLegend',
+          mode: 'horizontal',
+          title: 'Countries population',
           marginBottom: 7,
+          marginLeft: 10,
+          marginLeftTitle: 20,
           slices: [{
               max: 5000000,
               attrs: {
