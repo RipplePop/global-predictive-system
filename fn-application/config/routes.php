@@ -53,6 +53,9 @@ $route['default_controller']   = 'Home';
 $route['404_override']         = 'nothing';
 $route['translate_uri_dashes'] = TRUE;
 
+$route['country/([a-zA-Z_-]+)']                             = 'country';
+$route['country/gdp/([a-zA-Z_-]+)']                         = 'country/gdp';
+
 // $route['admin/([a-zA-Z_-]+)/search/(:any)/offset/(:num)'] = '$1/admin/index/search/$2/offset/$3';
 // $route['admin/([a-zA-Z_-]+)/search/(:any)/offset']        = '$1/admin/index/search/$2';
 // $route['admin/([a-zA-Z_-]+)/offset/(:num)']               = '$1/admin/index/offset/$2';

@@ -2,19 +2,88 @@ $(function () {
   /* ChartJS */
 
   'use strict';
-  var ChartColor = ["#1E1E1E", "#848484", "#B4B4B4", "#707070", "#E1E1E1", "#0F0F0F", "#8E8E8E", "#474747"];
+  var ChartColor = ["#2057B7", "#848484", "#B4B4B4", "#707070", "#E1E1E1", "#0F0F0F", "#8E8E8E", "#474747"];
   var chartFontcolor = '#6c757d';
   var chartGridLineColor = 'rgba(0,0,0,0.08)';
+  var code = $('#country_code').val();
+  var base_url = $('#base_url').val();
 
-  if ($("#barChart").length) {
-    var barChartCanvas = $("#barChart").get(0).getContext("2d");
+  if ($("#economics_chart").length) {
+    var url = base_url + 'country/gdp/' + code;
+    $.get(url)
+    .done(function(r){
+      var max = searchMax(r.gdp.values);
+      initChart($("#economics_chart"), r.gdp.dates, r.gdp.values, max, 'GDP');
+    });
+  }
+
+  if ($("#population_chart").length) {
+    var url = base_url + 'country/population/' + code;
+    $.get(url)
+    .done(function(r){
+      var max = searchMax(r.pop.values);
+      initChart($("#population_chart"), r.pop.dates, r.pop.values, max, 'Population');
+    });
+  }
+
+  if ($("#ethicity_chart").length) {
+    initChart($("#ethicity_chart"));
+  }
+
+  if ($("#religion_chart").length) {
+    initChart($("#religion_chart"));
+  }
+
+  if ($("#media_chart").length) {
+    initChart($("#media_chart"));
+  }
+
+  if ($("#polarity_chart").length) {
+    initChart($("#polarity_chart"));
+  }
+
+  if ($("#authority_chart").length) {
+    initChart($("#authority_chart"));
+  }
+
+  function searchMax(data) {
+    var max = 0;
+    $.each(data, function(i, v) {
+      if (v > max) {
+        if (parseInt(v).toString().length == 6)
+          max = (v + 10000);
+        else if (parseInt(v).toString().length == 7)
+          max = (v + 200000);
+        else if (parseInt(v).toString().length == 8)
+          max = (v + 3000000);
+        else if (parseInt(v).toString().length == 9)
+          max = (v + 40000000);
+        else if (parseInt(v).toString().length == 10)
+          max = (v + 500000000);
+        else if (parseInt(v).toString().length == 11)
+          max = (v + 6000000000);
+        else if (parseInt(v).toString().length == 12)
+          max = (v + 70000000000);
+        else if (parseInt(v).toString().length == 13)
+          max = (v + 800000000000);
+        else if (parseInt(v).toString().length == 14)
+          max = (v + 9000000000000);
+        
+        return false;
+      } 
+    });
+    return max;
+  }
+
+  function initChart(obj, labels = [], data = [], max, title) {
+    var barChartCanvas = obj.get(0).getContext("2d");
     var barChart = new Chart(barChartCanvas, {
       type: 'bar',
       data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: labels,
         datasets: [{
-          label: 'Profit',
-          data: [15, 28, 14, 22, 38, 30, 40, 70, 85, 50, 23, 20],
+          label: title,
+          data: data ? data : "No data available",
           backgroundColor: ChartColor[0],
           borderColor: ChartColor[0],
           borderWidth: 0
@@ -33,19 +102,19 @@ $(function () {
         },
         scales: {
           xAxes: [{
-            display: true,
+            display: false,
             scaleLabel: {
               display: true,
-              labelString: 'Sales by year',
+              labelString: '',
               fontColor: chartFontcolor,
               fontSize: 12,
               lineHeight: 2
             },
             ticks: {
               fontColor: chartFontcolor,
-              stepSize: 50,
+              stepSize: 1000000000,
               min: 0,
-              max: 150,
+              max: max,
               autoSkip: true,
               autoSkipPadding: 15,
               maxRotation: 0,
@@ -59,117 +128,13 @@ $(function () {
             }
           }],
           yAxes: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: 'revenue by sales',
-              fontColor: chartFontcolor,
-              fontSize: 12,
-              lineHeight: 2
-            },
-            ticks: {
-              display: true,
-              autoSkip: false,
-              maxRotation: 0,
-              fontColor: chartFontcolor,
-              stepSize: 50,
-              min: 0,
-              max: 150
-            },
-            gridLines: {
-              drawBorder: false,
-              color: chartGridLineColor,
-              zeroLineColor: chartGridLineColor
-            }
+            display: false
           }]
         },
         legend: {
           display: false
-        },
-        legendCallback: function (chart) {
-          var text = [];
-          text.push('<div class="chartjs-legend"><ul>');
-          for (var i = 0; i < chart.data.datasets.length; i++) {
-            console.log(chart.data.datasets[i]); // see what's inside the obj.
-            text.push('<li>');
-            text.push('<span style="background-color:' + chart.data.datasets[i].backgroundColor + '">' + '</span>');
-            text.push(chart.data.datasets[i].label);
-            text.push('</li>');
-          }
-          text.push('</ul></div>');
-          return text.join("");
-        },
-        elements: {
-          point: {
-            radius: 0
-          }
         }
       }
     });
-    //document.getElementById('bar-traffic-legend').innerHTML = barChart.generateLegend();
-  }
-
-  if ($("#pieChart").length) {
-    var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
-    var pieChart = new Chart(pieChartCanvas, {
-      type: 'pie',
-      data: {
-        datasets: [{
-          data: [15, 10, 5, 20, 10, 25, 15],
-          backgroundColor: [
-            ChartColor[3],
-            ChartColor[1],
-            ChartColor[2],
-            ChartColor[4],
-            ChartColor[5],
-            ChartColor[6],
-            ChartColor[7]
-          ],
-          borderColor: [
-            ChartColor[3],
-            ChartColor[1],
-            ChartColor[2],
-            ChartColor[4],
-            ChartColor[5],
-            ChartColor[6],
-            ChartColor[7]
-          ],
-        }],
-        labels: [
-          'Economics', 
-          'Religion',	
-          'Ethnicity',
-          'Population',
-          'Polarity',
-          'Party Visual Media Affiliate Density',
-          'Paryt Authority Discipline'
-        ]
-      },
-      options: {
-        responsive: true,
-        animation: {
-          animateScale: true,
-          animateRotate: true
-        },
-        legend: {
-          display: false
-        },
-        legendCallback: function (chart) {
-          var text = [];
-          text.push('<div class="chartjs-legend"><ul>');
-          for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
-            text.push('<li><span style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
-            text.push('</span>');
-            if (chart.data.labels[i]) {
-              text.push(chart.data.labels[i]);
-            }
-            text.push('</li>');
-          }
-          text.push('</div></ul>');
-          return text.join("");
-        }
-      }
-    });
-    //document.getElementById('pie-chart-legend').innerHTML = pieChart.generateLegend();
   }
 });

@@ -26,26 +26,22 @@ class Home extends MY_Controller
   public function index() {
     $countries = [];
 
-    if ( $this->cache->file->get( 'countries' ) ) {
-      $countries = $this->cache->file->get( 'countries' );
-    } else {
-      $datas = json_decode( file_get_contents( PUBLIC_API_URL_1 . 'country/all?format=json&page=1&per_page=400' )  );
-      if ( isset( $datas[1] ) ) {
-        foreach ( $datas[1] as $data) {
-          foreach ( $data as $key => $val ) {
-            if ( $key == 'name' ) {
-              array_push( $countries, $val );
-            }
-          }
-        }
-        $this->cache->file->save( 'countries', $countries, 2592000 );
-      }
-    }
+    // if ( $this->cache->file->get( 'countries' ) ) {
+    //   $countries = $this->cache->file->get( 'countries' );
+    // } else {
+    //   $datas = json_decode( file_get_contents( PUBLIC_API_URL_1 . 'countries?format=json&page=1&per_page=400' )  );
+    //   if ( isset( $datas[1] ) ) {
+    //     foreach ( $datas[1] as $key) {
+    //       array_push( $countries, [ 'id' => $key->id, 'name' => $key->name ] );
+    //     }
+    //     $this->cache->file->save( 'countries', $countries, 2592000 );
+    //   }
+    // }
 
     $config['title'] = 'Global Predictive System';
     $config['view'] = 'view_home';
     $config['js'] = $this->js;
-    $config['countries'] = $countries;
+    $config['countries'] = json_decode( file_get_contents( 'fn-uploads/json/countries.json' ) );
 
     $this->content->view( $config, false, false );
   }
